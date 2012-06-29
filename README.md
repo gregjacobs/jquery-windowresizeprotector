@@ -16,7 +16,7 @@ Then you go to unbind with this:
 jQuery( window ).off( 'resize', this.windowResizeHandler );
 ```
 
-If for some reason, the windowResizeHandler wasn't created or set up by the time you call .off() (maybe it only gets up in a certain situation), then you end up unbinding *all* window resize event handlers that many other pieces of code may have set up, because you are essentially calling .off() without a handler function. You are instead passing undefined (the property doesn't exist), which is equivalent.
+If for some reason, the windowResizeHandler wasn't created or set up by the time you call .off() (maybe it only gets set up in a certain situation), then you end up unbinding *all* window resize event handlers that many other pieces of code may have set up, because you are essentially calling .off() without a handler function. You are instead passing the `undefined` value (as the property doesn't exist), which is equivalent.
 
 This override helps by throwing an error if you accidentally call the .off() method (or .unbind()) for a 'resize' event on the `window` object without the second parameter (a handler), or if the second parameter is passed as undefined. Thus, it prevents you from ever accidentally making this very subtle mistake ;)
 
